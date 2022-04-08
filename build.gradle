@@ -68,7 +68,7 @@ dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 
     implementation "org.auioc.mcmod:arnicalib:${minecraft_version}-${arnicalib_version}:forgelib"
-    
+
     implementation fg.deobf("curse.maven:champions-307152:${champions_cf_file_id}")
 }
 
@@ -115,6 +115,14 @@ publishing {
         }
     }
     repositories {
+        maven {
+            name = 'GitHubPackages'
+            url = uri('https://maven.pkg.github.com/auioc/ExtraChampions')
+            credentials {
+                username = getVar('GITHUB_ACTOR')
+                password = getVar('GITHUB_TOKEN')
+            }
+        }
         maven {
             name = 'McmodsRepo'
             url "file://${project.projectDir}/mcmodsrepo"
