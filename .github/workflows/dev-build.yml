@@ -61,6 +61,7 @@ jobs:
             - name: Build with Gradle
               env:
                   CI_VERSION: ${{needs.first.outputs.ci_version}}
+                  GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
               run: ./gradlew clean build
 
             - name: Upload build artifacts
