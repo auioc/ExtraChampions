@@ -5,10 +5,7 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.Marker;
 import org.auioc.mcmod.arnicalib.utils.LogUtil;
 import org.auioc.mcmod.arnicalib.utils.java.VersionUtils;
-import org.auioc.mcmod.extrachampions.common.affix.AffixRegistry;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 @Mod(ExtraChampions.MOD_ID)
 public final class ExtraChampions {
@@ -22,11 +19,7 @@ public final class ExtraChampions {
     private static final Marker CORE = LogUtil.getMarker("CORE");
 
     public ExtraChampions() {
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(
-            (final FMLCommonSetupEvent event) -> {
-                AffixRegistry.register();
-            }
-        );
+        Initialization.init();
     }
 
     static {
