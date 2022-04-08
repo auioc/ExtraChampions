@@ -2,7 +2,7 @@
 
 <div align="center">
 
-A Champions Addon adds some new affixes and misc.
+A [Champions](https://github.com/TheIllusiveC4/Champions) Addon adds some new affixes and misc.
 
 [![GitHub license](https://img.shields.io/github/license/auioc/ExtraChampions?style=flat-square)](/LICENSE)
 [![GitHub release](https://img.shields.io/github/v/release/auioc/ExtraChampions?style=flat-square)](https://github.com/auioc/ExtraChampions/releases/latest)
