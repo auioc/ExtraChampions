@@ -34,5 +34,5 @@ Any type of contribution is welcome, here are some examples of how you may contr
 
 ## License
 
-ExtraChampions is licensed under the **GNU Lesser General Public License v2.1**.
+ExtraChampions is licensed under the **GNU Lesser General Public License v3.0**.
 The full license is in the [LICENSE](/LICENSE) file.
