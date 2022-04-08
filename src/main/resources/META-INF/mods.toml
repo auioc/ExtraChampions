@@ -1,0 +1,41 @@
+modLoader="javafml"
+loaderVersion="[40,)"
+license="GNU LGPLv3"
+issueTrackerURL="https://github.com/auioc/ExtraChampions/issues"
+
+[[mods]]
+modId="extrachampions"
+version="${file.jarVersion}"
+updateJSONURL="https://hi.auioc.org/ExtraChampions/update/1.18.2.json"
+displayName="ExtraChampions"
+displayURL="https://hi.auioc.org/ExtraChampions/"
+credits="AUIOC"
+authors="WakelssSloth56,Libellule505"
+description='''
+ExtraChampions
+'''
+
+[[dependencies.extrachampions]]
+    modId="forge"
+    mandatory=true
+    versionRange="[40,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.extrachampions]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.18.1,1.19)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.extrachampions]]
+    modId="arnicalib"
+    mandatory=true
+    versionRange="[5.2.0,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.extrachampions]]
+    modId="champions"
+    mandatory=true
+    versionRange="[1.18.2-2.1.0.0,)"
+    ordering="NONE"
+    side="BOTH"
