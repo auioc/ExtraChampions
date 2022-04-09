@@ -1,7 +1,7 @@
 package org.auioc.mcmod.extrachampions;
 
 import org.auioc.mcmod.extrachampions.common.affix.AffixRegistry;
-import org.auioc.mcmod.extrachampions.common.config.ExAffixConfig;
+import org.auioc.mcmod.extrachampions.common.config.ExtraAffixConfig;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -26,8 +26,8 @@ public final class Initialization {
     }
 
     private static void handleConfig(final IEventBus modEventBus) {
-        ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, ExAffixConfig.SPEC, ExtraChampions.MOD_ID + "-affixes.toml");
-        modEventBus.addListener(EventPriority.LOWEST, ExAffixConfig::rebuildAffixSettings);
+        ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, ExtraAffixConfig.SPEC, ExtraChampions.MOD_ID + "-affixes.toml");
+        modEventBus.addListener(EventPriority.LOWEST, ExtraAffixConfig::rebuildAffixSettings);
     }
 
 }
