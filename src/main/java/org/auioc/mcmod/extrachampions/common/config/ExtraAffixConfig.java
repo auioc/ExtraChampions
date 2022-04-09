@@ -2,15 +2,13 @@ package org.auioc.mcmod.extrachampions.common.config;
 
 import static org.auioc.mcmod.extrachampions.ExtraChampions.LOGGER;
 import java.util.ArrayList;
+import com.electronwill.nightconfig.core.CommentedConfig;
 import com.electronwill.nightconfig.core.UnmodifiableConfig;
 import org.apache.logging.log4j.Marker;
 import org.auioc.mcmod.arnicalib.utils.LogUtil;
-import org.auioc.mcmod.extrachampions.ExtraChampions;
 import org.auioc.mcmod.extrachampions.api.affix.ExtraAffix;
 import org.auioc.mcmod.extrachampions.common.affix.AffixRegistry;
 import net.minecraftforge.common.ForgeConfigSpec;
-import net.minecraftforge.fml.config.ModConfig;
-import net.minecraftforge.fml.event.config.ModConfigEvent;
 import top.theillusivec4.champions.common.affix.core.AffixManager;
 import top.theillusivec4.champions.common.config.AffixesConfig;
 import top.theillusivec4.champions.common.config.ChampionsConfig;
@@ -45,35 +43,28 @@ public class ExtraAffixConfig {
         SPEC = b.build();
     }
 
-    public static void rebuildAffixSettings(final ModConfigEvent event) {
-        ModConfig config = event.getConfig();
-        if (
-            config.getModId().equals(ExtraChampions.MOD_ID)
-                && config.getType() == ModConfig.Type.SERVER
-                && config.getSpec() == ExtraAffixConfig.SPEC
-        ) {
-            LOGGER.info(MARKER, "Rebuild affix settings");
-            AffixRegistry.AFFIXES.forEach((affix) -> {
-                UnmodifiableConfig rawConfig = event.getConfig().getConfigData().get(affix.getIdentifier());
+    public static void buildExtraAffixSettings(CommentedConfig rawConfig) {
+        LOGGER.info(MARKER, "Build extra affix settings");
+        for (var affix : AffixRegistry.AFFIXES) {
+            UnmodifiableConfig config = rawConfig.get(affix.getIdentifier());
+            {
+                var affixConfig = new AffixesConfig.AffixConfig();
                 {
-                    var affixConfig = new AffixesConfig.AffixConfig();
-                    {
-                        affixConfig.identifier = affix.getIdentifier();
-                        affixConfig.enabled = rawConfig.get("enabled");
-                        affixConfig.minTier = rawConfig.get("minTier");
-                        //? TOML dose not support NULL value
-                        affixConfig.maxTier = ((Integer) rawConfig.get("minTier")) == -1 ? null : rawConfig.get("minTier");
-                        affixConfig.mobList = rawConfig.get("mobList");
-                        affixConfig.mobPermission = rawConfig.get("mobPermission");
-                    }
-                    ChampionsConfig.affixes.add(affixConfig);
+                    affixConfig.identifier = affix.getIdentifier();
+                    affixConfig.enabled = config.get("enabled");
+                    affixConfig.minTier = config.get("minTier");
+                    //? TOML dose not support NULL value
+                    affixConfig.maxTier = ((Integer) config.get("minTier")) == -1 ? null : config.get("minTier");
+                    affixConfig.mobList = config.get("mobList");
+                    affixConfig.mobPermission = config.get("mobPermission");
                 }
-                {
-                    if (affix instanceof ExtraAffix) ((ExtraAffix) affix).setConfig(rawConfig.get("extra"));
-                }
-            });
-            AffixManager.buildAffixSettings();
+                ChampionsConfig.affixes.add(affixConfig);
+            }
+            {
+                if (affix instanceof ExtraAffix) ((ExtraAffix) affix).setConfig(config.get("extra"));
+            }
         }
+        AffixManager.buildAffixSettings();
     }
 
 }
