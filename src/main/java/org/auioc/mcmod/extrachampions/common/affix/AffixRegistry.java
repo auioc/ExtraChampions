@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.logging.log4j.Marker;
 import org.auioc.mcmod.arnicalib.utils.LogUtil;
 import org.auioc.mcmod.extrachampions.common.affix.impl.AcupunctureAffix;
+import org.auioc.mcmod.extrachampions.common.affix.impl.AssassinAffix;
 import org.auioc.mcmod.extrachampions.common.affix.impl.DispelAffix;
 import org.auioc.mcmod.extrachampions.common.affix.impl.FireeaterAffix;
 import org.auioc.mcmod.extrachampions.common.affix.impl.HurricaneAffix;
@@ -26,6 +27,7 @@ public final class AffixRegistry {
             add(new RealityAffix());
             add(new HurricaneAffix());
             add(new FireeaterAffix());
+            add(new AssassinAffix());
         }
     };
 
