@@ -1,6 +1,7 @@
 package org.auioc.mcmod.extrachampions.common.affix.impl;
 
 import java.util.function.Predicate;
+import org.auioc.mcmod.extrachampions.api.affix.AffixBasicConfig;
 import org.auioc.mcmod.extrachampions.api.affix.ExtraAffix;
 import org.auioc.mcmod.extrachampions.utils.ChampionHelper;
 import net.minecraft.world.effect.MobEffect;
@@ -19,7 +20,7 @@ public class NecromancerAffix extends ExtraAffix<NecromancerAffix.Config> {
     private static final MobEffect[] EFFECTS = new MobEffect[] {MobEffects.DAMAGE_BOOST, MobEffects.MOVEMENT_SPEED, MobEffects.DIG_SPEED};
 
     public NecromancerAffix() {
-        super("necromancer", AffixCategory.CC, Config::new);
+        super("necromancer", AffixCategory.CC, () -> new AffixBasicConfig().setMinTier(3), Config::new);
     }
 
     @Override

@@ -1,6 +1,7 @@
 package org.auioc.mcmod.extrachampions.common.affix.impl;
 
 import java.util.function.Predicate;
+import org.auioc.mcmod.extrachampions.api.affix.AffixBasicConfig;
 import org.auioc.mcmod.extrachampions.api.affix.ExtraAffix;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -16,7 +17,7 @@ public class LeaderAffix extends ExtraAffix<LeaderAffix.Config> {
     private static final Predicate<LivingEntity> IS_MONSTER = (living) -> living.getType().getCategory() == MobCategory.MONSTER;
 
     public LeaderAffix() {
-        super("leader", AffixCategory.CC, Config::new);
+        super("leader", AffixCategory.CC, () -> new AffixBasicConfig().setMinTier(3), Config::new);
     }
 
     @Override
