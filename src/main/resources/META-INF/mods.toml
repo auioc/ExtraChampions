@@ -9,10 +9,11 @@ version="${file.jarVersion}"
 updateJSONURL="https://hi.auioc.org/ExtraChampions/update/1.18.2.json"
 displayName="ExtraChampions"
 displayURL="https://hi.auioc.org/ExtraChampions/"
+logoFile="icon.png"
 credits="AUIOC"
 authors="WakelssSloth56,Libellule505"
 description='''
-ExtraChampions
+A Champions Addon adds some new affixes and misc.
 '''
 
 [[dependencies.extrachampions]]
