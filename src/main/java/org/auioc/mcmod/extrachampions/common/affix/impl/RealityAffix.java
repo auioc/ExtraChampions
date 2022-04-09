@@ -1,16 +1,14 @@
 package org.auioc.mcmod.extrachampions.common.affix.impl;
 
+import org.auioc.mcmod.extrachampions.api.affix.ExtraAffix;
 import net.minecraft.world.damagesource.DamageSource;
 import top.theillusivec4.champions.api.AffixCategory;
 import top.theillusivec4.champions.api.IChampion;
-import top.theillusivec4.champions.common.affix.core.BasicAffix;
 
-public class RealityAffix extends BasicAffix {
-
-    private static final float NON_MAGIC_DAMAGE_MULTIPLIER = 1.0F + 0.25F;
+public class RealityAffix extends ExtraAffix<RealityAffix.Config> {
 
     public RealityAffix() {
-        super("reality", AffixCategory.DEFENSE);
+        super("reality", AffixCategory.DEFENSE, Config::new);
     }
 
     @Override
@@ -22,7 +20,11 @@ public class RealityAffix extends BasicAffix {
     @Override
     public float onDamage(IChampion champion, DamageSource source, float amount, float newAmount) {
         if (source.isMagic()) return 0.0F;
-        return amount * NON_MAGIC_DAMAGE_MULTIPLIER;
+        return amount * (float) this.config.nonMagicDamageMultiplier;
+    }
+
+    protected static class Config {
+        public double nonMagicDamageMultiplier = 1.0D + 0.25D;
     }
 
 }
