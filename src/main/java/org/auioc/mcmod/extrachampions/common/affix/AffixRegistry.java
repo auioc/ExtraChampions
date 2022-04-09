@@ -11,6 +11,7 @@ import org.auioc.mcmod.extrachampions.common.affix.impl.DispelAffix;
 import org.auioc.mcmod.extrachampions.common.affix.impl.FireeaterAffix;
 import org.auioc.mcmod.extrachampions.common.affix.impl.HurricaneAffix;
 import org.auioc.mcmod.extrachampions.common.affix.impl.JinxAffix;
+import org.auioc.mcmod.extrachampions.common.affix.impl.NecromancerAffix;
 import org.auioc.mcmod.extrachampions.common.affix.impl.RealityAffix;
 import top.theillusivec4.champions.Champions;
 import top.theillusivec4.champions.api.IAffix;
@@ -28,6 +29,7 @@ public final class AffixRegistry {
             add(new HurricaneAffix());
             add(new FireeaterAffix());
             add(new AssassinAffix());
+            add(new NecromancerAffix());
         }
     };
 
