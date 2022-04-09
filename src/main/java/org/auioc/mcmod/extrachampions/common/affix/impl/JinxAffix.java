@@ -31,7 +31,6 @@ public class JinxAffix extends ExtraAffix<JinxAffix.Config> {
                 )
             );
         }
-        System.err.println(this.config.effectDuration);
         return super.onDamage(champion, source, amount, newAmount);
     }
 
