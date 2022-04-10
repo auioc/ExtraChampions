@@ -9,7 +9,6 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobType;
-import net.minecraft.world.phys.AABB;
 import top.theillusivec4.champions.api.AffixCategory;
 import top.theillusivec4.champions.api.IChampion;
 
@@ -28,11 +27,8 @@ public class NecromancerAffix extends ExtraAffix<NecromancerAffix.Config> {
         var living = champion.getLivingEntity();
         if (living.tickCount % INTERVAL != 0) return;
 
-        int raduis = this.config.searchRadiusOfTeammate;
-        AABB range = (new AABB(living.blockPosition())).inflate(raduis).expandTowards(0.0D, raduis, 0.0D);
-
         int effectAmplifier = Math.min((ChampionHelper.getTier(champion) - 1), 1) - 1;
-        living.getLevel().getEntitiesOfClass(LivingEntity.class, range, IS_UNDEAD)
+        ChampionHelper.getLivingFromLevel(champion, this.config.searchRadiusOfTeammate, IS_UNDEAD)
             .forEach((teammate) -> {
                 for (MobEffect effect : EFFECTS) {
                     teammate.addEffect(new MobEffectInstance(effect, INTERVAL, effectAmplifier));
