@@ -1,9 +1,11 @@
 package org.auioc.mcmod.extrachampions.api.affix;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.function.Supplier;
 import com.electronwill.nightconfig.core.UnmodifiableConfig;
 import com.electronwill.nightconfig.core.conversion.ObjectConverter;
+import org.auioc.mcmod.extrachampions.api.exception.AutoConfigBuildingException;
 import net.minecraftforge.common.ForgeConfigSpec;
 import top.theillusivec4.champions.api.AffixCategory;
 import top.theillusivec4.champions.common.affix.core.BasicAffix;
@@ -43,15 +45,27 @@ public abstract class ExtraAffix<C> extends BasicAffix {
         this.basicConfig.build(builder);
         if (!(this.config instanceof EmptyAffixExtraConfig)) {
             builder.push("extra");
-            try {
-                for (Field filed : this.config.getClass().getFields()) {
-                    builder.define(filed.getName(), filed.get(this.config));
-                }
-            } catch (IllegalArgumentException | IllegalAccessException e) {
-                throw new RuntimeException("Build config of extra affix '" + this.getIdentifier() + "' failed", e);
-            }
+            buildExtraConfig(builder);
             builder.pop();
         }
     };
+
+    protected void buildExtraConfig(ForgeConfigSpec.Builder builder) {
+        try {
+            for (Field filed : this.config.getClass().getFields()) {
+                var name = filed.getName();
+                var value = filed.get(this.config);
+                if (value instanceof Integer || value instanceof Double || value instanceof Boolean || value instanceof String) {
+                    builder.define(name, value);
+                } else if (value instanceof ArrayList<?>) {
+                    builder.defineList(name, (ArrayList<?>) value, (o) -> true);
+                } else {
+                    throw new AutoConfigBuildingException("Unsupported value type: " + value.getClass());
+                }
+            }
+        } catch (IllegalArgumentException | IllegalAccessException e) {
+            throw new AutoConfigBuildingException("Build config of extra affix '" + this.getIdentifier() + "' failed", e);
+        }
+    }
 
 }
