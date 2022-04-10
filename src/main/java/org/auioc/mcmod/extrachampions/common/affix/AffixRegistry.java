@@ -28,6 +28,7 @@ public final class AffixRegistry {
             add(new StickyAffix());
             add(new DisarmoringAffix());
             add(new FuryAffix());
+            add(new ThiefAffix());
         }
     };
 
