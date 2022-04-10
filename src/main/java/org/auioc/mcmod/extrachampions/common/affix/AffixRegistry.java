@@ -25,6 +25,8 @@ public final class AffixRegistry {
             add(new NecromancerAffix());
             add(new LeaderAffix());
             add(new ShadowAffix());
+            add(new StickyAffix());
+            add(new DisarmoringAffix());
         }
     };
 
