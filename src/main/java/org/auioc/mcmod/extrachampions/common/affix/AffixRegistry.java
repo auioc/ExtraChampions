@@ -27,6 +27,7 @@ public final class AffixRegistry {
             add(new ShadowAffix());
             add(new StickyAffix());
             add(new DisarmoringAffix());
+            add(new FuryAffix());
         }
     };
 
