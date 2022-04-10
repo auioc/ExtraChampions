@@ -34,12 +34,14 @@ public abstract class ExtraAffix<C> extends BasicAffix {
     }
 
     public void setExtraConfig(UnmodifiableConfig config) {
-        new ObjectConverter().toObject(config, this.config);
+        if (config != null) {
+            new ObjectConverter().toObject(config, this.config);
+        }
     }
 
     public void buildConfig(ForgeConfigSpec.Builder builder) {
         this.basicConfig.build(builder);
-        {
+        if (!(this.config instanceof EmptyAffixExtraConfig)) {
             builder.push("extra");
             try {
                 for (Field filed : this.config.getClass().getFields()) {
