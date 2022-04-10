@@ -38,8 +38,11 @@ public abstract class ExtraAffix<C> extends BasicAffix {
     public void setExtraConfig(UnmodifiableConfig config) {
         if (config != null) {
             new ObjectConverter().toObject(config, this.config);
+            onExtraConfigUpdate();
         }
     }
+
+    protected void onExtraConfigUpdate() {}
 
     public void buildConfig(ForgeConfigSpec.Builder builder) {
         this.basicConfig.build(builder);
