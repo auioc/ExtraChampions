@@ -46,11 +46,28 @@ public class ThiefAffix extends ExtraAffix<ThiefAffix.Config> {
     protected static class Config {
         public List<String> stealableItems = new ArrayList<String>() {
             {
-                add("minecraft:iron_ingot");
-                add("minecraft:gold_ingot");
+                add("minecraft:amethyst_shard");
+                add("minecraft:creeper_head");
                 add("minecraft:diamond");
-                add("minecraft:netherite_ingot");
+                add("minecraft:dragon_egg");
+                add("minecraft:dragon_head");
+                add("minecraft:elytra");
                 add("minecraft:emerald");
+                add("minecraft:enchanted_golden_apple");
+                add("minecraft:filled_map");
+                add("minecraft:gold_ingot");
+                add("minecraft:golden_apple");
+                add("minecraft:heart_of_the_sea");
+                add("minecraft:iron_ingot");
+                add("minecraft:lapis_lazuli");
+                add("minecraft:nether_star");
+                add("minecraft:netherite_ingot");
+                add("minecraft:player_head");
+                add("minecraft:potion");
+                add("minecraft:skeleton_skull");
+                add("minecraft:totem_of_undying");
+                add("minecraft:wither_skeleton_skull");
+                add("minecraft:zombie_head");
             }
         };
     }
