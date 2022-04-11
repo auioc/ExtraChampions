@@ -19,7 +19,7 @@ public class StickyAffix extends ExtraAffix<StickyAffix.Config> {
 
     private static final IntUnaryOperator CHANCE = (tier) -> 30 + tier * 10;
 
-    private List<Item> blackList;
+    private List<Item> blacklist;
 
     public StickyAffix() {
         super("sticky", AffixCategory.OFFENSE, () -> new AffixBasicConfig().setMinTier(2), Config::new);
@@ -43,18 +43,18 @@ public class StickyAffix extends ExtraAffix<StickyAffix.Config> {
     }
 
     private boolean shouldDrop(ItemStack itemToDrop) {
-        return !getBlackList().contains(itemToDrop.getItem()) && !EnchantmentHelper.hasBindingCurse(itemToDrop);
+        return !getBlacklist().contains(itemToDrop.getItem()) && !EnchantmentHelper.hasBindingCurse(itemToDrop);
     }
 
-    private List<Item> getBlackList() {
-        if (this.blackList == null) {
-            this.blackList = ItemUtils.getItems(this.config.blackList);
+    private List<Item> getBlacklist() {
+        if (this.blacklist == null) {
+            this.blacklist = ItemUtils.getItems(this.config.blacklist);
         }
-        return this.blackList;
+        return this.blacklist;
     }
 
     protected static class Config {
-        public List<String> blackList = new ArrayList<String>();
+        public List<String> blacklist = new ArrayList<String>();
     }
 
 }
