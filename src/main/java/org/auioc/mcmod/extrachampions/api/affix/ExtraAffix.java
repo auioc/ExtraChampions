@@ -46,7 +46,7 @@ public abstract class ExtraAffix<C> extends BasicAffix {
 
     public void buildConfig(ForgeConfigSpec.Builder builder) {
         this.basicConfig.build(builder);
-        if (!(this.config instanceof EmptyAffixExtraConfig)) {
+        if (this.config != null) {
             builder.push("extra");
             buildExtraConfig(builder);
             builder.pop();

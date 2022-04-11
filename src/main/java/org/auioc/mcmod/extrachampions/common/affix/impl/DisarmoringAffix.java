@@ -1,7 +1,7 @@
 package org.auioc.mcmod.extrachampions.common.affix.impl;
 
+import org.apache.commons.lang3.ObjectUtils.Null;
 import org.auioc.mcmod.extrachampions.api.affix.AffixBasicConfig;
-import org.auioc.mcmod.extrachampions.api.affix.EmptyAffixExtraConfig;
 import org.auioc.mcmod.extrachampions.api.affix.ExtraAffix;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.damagesource.DamageSource;
@@ -10,10 +10,10 @@ import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import top.theillusivec4.champions.api.AffixCategory;
 import top.theillusivec4.champions.api.IChampion;
 
-public class DisarmoringAffix extends ExtraAffix<EmptyAffixExtraConfig> {
+public class DisarmoringAffix extends ExtraAffix<Null> {
 
     public DisarmoringAffix() {
-        super("disarmoring", AffixCategory.OFFENSE, () -> new AffixBasicConfig().setMinTier(2), EmptyAffixExtraConfig::new);
+        super("disarmoring", AffixCategory.OFFENSE, () -> new AffixBasicConfig().setMinTier(2), () -> null);
     }
 
     @Override
