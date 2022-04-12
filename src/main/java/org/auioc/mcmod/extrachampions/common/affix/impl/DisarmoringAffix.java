@@ -18,8 +18,7 @@ public class DisarmoringAffix extends ExtraAffix<Null> {
 
     @Override
     public boolean onAttack(IChampion champion, LivingEntity target, DamageSource source, float amount) {
-        if (target instanceof ServerPlayer) {
-            var player = (ServerPlayer) target;
+        if (target instanceof ServerPlayer player) {
             var inventory = player.getInventory();
             var itemToDrop = inventory.getArmor(champion.getLivingEntity().getRandom().nextInt(4));
             if (!EnchantmentHelper.hasBindingCurse(itemToDrop)) {

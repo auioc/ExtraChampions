@@ -22,8 +22,7 @@ public class ThiefAffix extends ExtraAffix<ThiefAffix.Config> {
 
     @Override
     public boolean onAttack(IChampion champion, LivingEntity target, DamageSource source, float amount) {
-        if (target instanceof ServerPlayer) {
-            var player = (ServerPlayer) target;
+        if (target instanceof ServerPlayer player) {
             var inventory = player.getInventory();
             var list = inventory.items
                 .stream()

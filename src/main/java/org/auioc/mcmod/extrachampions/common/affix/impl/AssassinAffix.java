@@ -15,8 +15,7 @@ public class AssassinAffix extends BasicAffix {
     @Override
     public boolean onAttacked(IChampion champion, DamageSource source, float amount) {
         var living = champion.getLivingEntity();
-        if (living.getHealth() == living.getMaxHealth() && source.getEntity() instanceof LivingEntity) {
-            var target = (LivingEntity) source.getEntity();
+        if (living.getHealth() == living.getMaxHealth() && source.getEntity() instanceof LivingEntity target) {
             var viewVec = target.getViewVector(1.0F).reverse();
             living.teleportTo(target.getX() + viewVec.x(), target.getY(), target.getZ() + viewVec.z());
             return false;

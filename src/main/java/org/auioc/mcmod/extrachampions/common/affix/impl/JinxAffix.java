@@ -22,8 +22,8 @@ public class JinxAffix extends ExtraAffix<JinxAffix.Config> {
 
     @Override
     public float onDamage(IChampion champion, DamageSource source, float amount, float newAmount) {
-        if (source.getEntity() instanceof LivingEntity) {
-            ((LivingEntity) source.getEntity()).addEffect(
+        if (source.getEntity() instanceof LivingEntity sourceLiving) {
+            sourceLiving.addEffect(
                 new MobEffectInstance(
                     MobEffects.UNLUCK,
                     this.config.effectDuration,

@@ -21,8 +21,7 @@ public class HurricaneAffix extends ExtraAffix<HurricaneAffix.Config> {
 
     @Override
     public boolean onDeath(IChampion champion, DamageSource source) {
-        if (source.getEntity() instanceof LivingEntity) {
-            var target = (LivingEntity) source.getEntity();
+        if (source.getEntity() instanceof LivingEntity target) {
             target.addEffect(new MobEffectInstance(MobEffects.CONFUSION, this.config.effectDuration));
             randomTeleport(target, this.config.teleportRaduis);
         }
