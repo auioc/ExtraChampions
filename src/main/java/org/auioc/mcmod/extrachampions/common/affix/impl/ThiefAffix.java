@@ -5,6 +5,7 @@ import java.util.List;
 import org.auioc.mcmod.arnicalib.utils.game.ItemUtils;
 import org.auioc.mcmod.arnicalib.utils.java.RandomUtils;
 import org.auioc.mcmod.extrachampions.api.affix.ExtraAffix;
+import org.auioc.mcmod.extrachampions.server.advancement.ExChampCriterionTriggers;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
@@ -29,7 +30,9 @@ public class ThiefAffix extends ExtraAffix<ThiefAffix.Config> {
                 .filter((itemStack) -> getStealableItems().contains(itemStack.getItem()))
                 .toList();
             if (!list.isEmpty()) {
-                inventory.removeItem(RandomUtils.pickOneFromList(list));
+                var stolenItem = RandomUtils.pickOneFromList(list);
+                inventory.removeItem(stolenItem);
+                ExChampCriterionTriggers.ITEM_STOLEN.trigger(player, stolenItem);
             }
         }
         return super.onAttack(champion, target, source, amount);

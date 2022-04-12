@@ -2,6 +2,7 @@ package org.auioc.mcmod.extrachampions;
 
 import org.auioc.mcmod.extrachampions.common.affix.AffixRegistry;
 import org.auioc.mcmod.extrachampions.common.config.ExtraAffixConfig;
+import org.auioc.mcmod.extrachampions.server.advancement.ExChampCriterionTriggers;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -19,6 +20,7 @@ public final class Initialization {
     }
 
     private static void register(final IEventBus modEventBus) {
+        ExChampCriterionTriggers.init();
         modEventBus.addListener(
             (final FMLCommonSetupEvent event) -> {
                 AffixRegistry.register();
