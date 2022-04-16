@@ -1,0 +1,23 @@
+{
+    "display": {
+        "icon": {
+            "item": "minecraft:emerald"
+        },
+        "title": {
+            "translate": "advancements.champions.watch_out_for_thieves.title"
+        },
+        "description": {
+            "translate": "advancements.champions.watch_out_for_thieves.description"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "parent": "champions:kill_a_champion",
+    "criteria": {
+        "item_stolen": {
+            "trigger": "extrachampions:item_stolen"
+        }
+    }
+}

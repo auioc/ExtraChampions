@@ -1,0 +1,26 @@
+{
+    "display": {
+        "icon": {
+            "item": "minecraft:dragon_egg"
+        },
+        "title": {
+            "translate": "advancements.champions.lost_dragon_egg.title"
+        },
+        "description": {
+            "translate": "advancements.champions.lost_dragon_egg.description"
+        },
+        "frame": "challenge",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": true
+    },
+    "parent": "extrachampions:watch_out_for_thieves",
+    "criteria": {
+        "lost_dragon_egg": {
+            "trigger": "extrachampions:item_stolen",
+            "conditions": {
+                "item": { "items": ["minecraft:dragon_egg"] }
+            }
+        }
+    }
+}

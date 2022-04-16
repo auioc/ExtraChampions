@@ -12,5 +12,12 @@
     "affix.champions.sticky": "Sticky",
     "affix.champions.disarmoring": "Disarmoring",
     "affix.champions.fury": "Fury",
-    "affix.champions.thief": "Thief"
+    "affix.champions.thief": "Thief",
+
+    "advancements.champions.watch_out_for_thieves.title": "Watch out for thieves",
+    "advancements.champions.watch_out_for_thieves.description": "Any item was stolen by a champion mob",
+    "advancements.champions.lost_dragon_egg.title": "Where is my dragon egg?",
+    "advancements.champions.lost_dragon_egg.description": "The dragon egg was stolen by a champion mob",
+    "advancements.champions.lost_nether_star.title": "Where is my nether star?",
+    "advancements.champions.lost_nether_star.description": "A nether star was stolen by a champion mob"
 }

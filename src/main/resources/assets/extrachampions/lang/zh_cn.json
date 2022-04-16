@@ -12,5 +12,12 @@
     "affix.champions.sticky": "粘性",
     "affix.champions.disarmoring": "卸甲",
     "affix.champions.fury": "狂怒",
-    "affix.champions.thief": "窃贼"
+    "affix.champions.thief": "窃贼",
+
+    "advancements.champions.watch_out_for_thieves.title": "提防窃贼",
+    "advancements.champions.watch_out_for_thieves.description": "被冠军怪物偷走一件物品",
+    "advancements.champions.lost_dragon_egg.title": "咦，放哪里去了？",
+    "advancements.champions.lost_dragon_egg.description": "被冠军怪物偷走龙蛋",
+    "advancements.champions.lost_nether_star.title": "啊，怎么会这样？",
+    "advancements.champions.lost_nether_star.description": "被冠军怪物偷走下界之星"
 }
