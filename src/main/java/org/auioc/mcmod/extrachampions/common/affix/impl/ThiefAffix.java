@@ -49,6 +49,7 @@ public class ThiefAffix extends ExtraAffix<ThiefAffix.Config> {
         public List<String> stealableItems = new ArrayList<String>() {
             {
                 add("minecraft:amethyst_shard");
+                add("minecraft:beacon");
                 add("minecraft:creeper_head");
                 add("minecraft:diamond");
                 add("minecraft:dragon_egg");
