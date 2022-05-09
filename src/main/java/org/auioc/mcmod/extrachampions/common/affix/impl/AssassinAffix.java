@@ -18,7 +18,6 @@ public class AssassinAffix extends BasicAffix {
         if (living.getHealth() == living.getMaxHealth() && source.getEntity() instanceof LivingEntity target) {
             var viewVec = target.getViewVector(1.0F).reverse();
             living.teleportTo(target.getX() + viewVec.x(), target.getY(), target.getZ() + viewVec.z());
-            return false;
         }
         return super.onAttacked(champion, source, amount);
     }
