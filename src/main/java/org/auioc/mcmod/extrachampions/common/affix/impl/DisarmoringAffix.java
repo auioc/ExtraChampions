@@ -1,5 +1,6 @@
 package org.auioc.mcmod.extrachampions.common.affix.impl;
 
+import java.util.function.Supplier;
 import org.apache.commons.lang3.ObjectUtils.Null;
 import org.auioc.mcmod.extrachampions.api.affix.AffixBasicConfig;
 import org.auioc.mcmod.extrachampions.api.affix.ExtraAffix;
@@ -12,8 +13,10 @@ import top.theillusivec4.champions.api.IChampion;
 
 public class DisarmoringAffix extends ExtraAffix<Null> {
 
+    private static final Supplier<AffixBasicConfig> BASIC_CONFIG = () -> new AffixBasicConfig().setEnabled(false).setMinTier(2);
+
     public DisarmoringAffix() {
-        super("disarmoring", AffixCategory.OFFENSE, () -> new AffixBasicConfig().setMinTier(2), () -> null);
+        super("disarmoring", AffixCategory.OFFENSE, BASIC_CONFIG, () -> null);
     }
 
     @Override

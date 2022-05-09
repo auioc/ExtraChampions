@@ -2,8 +2,10 @@ package org.auioc.mcmod.extrachampions.common.affix.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Supplier;
 import org.auioc.mcmod.arnicalib.utils.game.ItemUtils;
 import org.auioc.mcmod.arnicalib.utils.java.RandomUtils;
+import org.auioc.mcmod.extrachampions.api.affix.AffixBasicConfig;
 import org.auioc.mcmod.extrachampions.api.affix.ExtraAffix;
 import org.auioc.mcmod.extrachampions.server.advancement.ExChampCriterionTriggers;
 import net.minecraft.server.level.ServerPlayer;
@@ -15,10 +17,12 @@ import top.theillusivec4.champions.api.IChampion;
 
 public class ThiefAffix extends ExtraAffix<ThiefAffix.Config> {
 
+    private static final Supplier<AffixBasicConfig> BASIC_CONFIG = () -> new AffixBasicConfig().setEnabled(false).setMinTier(2);
+
     private List<Item> stealableItems;
 
     public ThiefAffix() {
-        super("thief", AffixCategory.OFFENSE, Config::new);
+        super("thief", AffixCategory.OFFENSE, BASIC_CONFIG, Config::new);
     }
 
     @Override

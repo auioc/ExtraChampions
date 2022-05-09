@@ -3,6 +3,7 @@ package org.auioc.mcmod.extrachampions.common.affix.impl;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.IntUnaryOperator;
+import java.util.function.Supplier;
 import org.auioc.mcmod.arnicalib.utils.game.ItemUtils;
 import org.auioc.mcmod.extrachampions.api.affix.AffixBasicConfig;
 import org.auioc.mcmod.extrachampions.api.affix.ExtraAffix;
@@ -17,12 +18,14 @@ import top.theillusivec4.champions.api.IChampion;
 
 public class StickyAffix extends ExtraAffix<StickyAffix.Config> {
 
+    private static final Supplier<AffixBasicConfig> BASIC_CONFIG = () -> new AffixBasicConfig().setEnabled(false).setMinTier(2);
+
     private static final IntUnaryOperator CHANCE = (tier) -> 30 + tier * 10;
 
     private List<Item> blacklist;
 
     public StickyAffix() {
-        super("sticky", AffixCategory.OFFENSE, () -> new AffixBasicConfig().setMinTier(2), Config::new);
+        super("sticky", AffixCategory.OFFENSE, BASIC_CONFIG, Config::new);
     }
 
     @Override
