@@ -1,5 +1,8 @@
 package org.auioc.mcmod.extrachampions.common.affix.impl;
 
+import java.util.List;
+import java.util.function.Supplier;
+import org.auioc.mcmod.extrachampions.api.affix.AffixBasicConfig;
 import org.auioc.mcmod.extrachampions.api.affix.ExtraAffix;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
@@ -10,10 +13,12 @@ import top.theillusivec4.champions.api.IChampion;
 
 public class AcupunctureAffix extends ExtraAffix<AcupunctureAffix.Config> {
 
+    private static final Supplier<AffixBasicConfig> BASIC_CONFIG = () -> new AffixBasicConfig().setMobList(List.of("minecraft:creeper"));
+
     private AttributeModifier modifier;
 
     public AcupunctureAffix() {
-        super("acupuncture", AffixCategory.OFFENSE, Config::new);
+        super("acupuncture", AffixCategory.OFFENSE, BASIC_CONFIG, Config::new);
     }
 
     @Override

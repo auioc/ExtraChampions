@@ -1,5 +1,8 @@
 package org.auioc.mcmod.extrachampions.common.affix.impl;
 
+import java.util.List;
+import java.util.function.Supplier;
+import org.auioc.mcmod.extrachampions.api.affix.AffixBasicConfig;
 import org.auioc.mcmod.extrachampions.api.affix.ExtraAffix;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -9,10 +12,12 @@ import top.theillusivec4.champions.api.IChampion;
 
 public class FuryAffix extends ExtraAffix<FuryAffix.Config> {
 
+    private static final Supplier<AffixBasicConfig> BASIC_CONFIG = () -> new AffixBasicConfig().setMobList(List.of("minecraft:creeper"));
+
     private AttributeModifier modifier;
 
     public FuryAffix() {
-        super("fury", AffixCategory.OFFENSE, true, Config::new);
+        super("fury", AffixCategory.OFFENSE, true, BASIC_CONFIG, Config::new);
     }
 
     @Override

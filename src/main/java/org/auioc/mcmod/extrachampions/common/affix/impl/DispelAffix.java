@@ -1,22 +1,27 @@
 package org.auioc.mcmod.extrachampions.common.affix.impl;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.function.IntUnaryOperator;
+import java.util.function.Supplier;
+import org.apache.commons.lang3.ObjectUtils.Null;
 import org.auioc.mcmod.arnicalib.utils.game.EffectUtils;
+import org.auioc.mcmod.extrachampions.api.affix.AffixBasicConfig;
+import org.auioc.mcmod.extrachampions.api.affix.ExtraAffix;
 import org.auioc.mcmod.extrachampions.utils.ChampionHelper;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
 import top.theillusivec4.champions.api.AffixCategory;
 import top.theillusivec4.champions.api.IChampion;
-import top.theillusivec4.champions.common.affix.core.BasicAffix;
 
+public class DispelAffix extends ExtraAffix<Null> {
 
-public class DispelAffix extends BasicAffix {
+    private static final Supplier<AffixBasicConfig> BASIC_CONFIG = () -> new AffixBasicConfig().setMobList(List.of("minecraft:creeper"));
 
     private static final IntUnaryOperator CHANCE = (tier) -> 50 + tier * 10;
 
     public DispelAffix() {
-        super("dispel", AffixCategory.OFFENSE);
+        super("dispel", AffixCategory.OFFENSE, BASIC_CONFIG, () -> null);
     }
 
     @Override

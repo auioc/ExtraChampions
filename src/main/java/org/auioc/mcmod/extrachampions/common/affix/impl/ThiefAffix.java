@@ -17,7 +17,10 @@ import top.theillusivec4.champions.api.IChampion;
 
 public class ThiefAffix extends ExtraAffix<ThiefAffix.Config> {
 
-    private static final Supplier<AffixBasicConfig> BASIC_CONFIG = () -> new AffixBasicConfig().setEnabled(false).setMinTier(2);
+    private static final Supplier<AffixBasicConfig> BASIC_CONFIG = () -> new AffixBasicConfig()
+        .setEnabled(false)
+        .setMinTier(2)
+        .setMobList(List.of("minecraft:creeper"));
 
     private List<Item> stealableItems;
 
