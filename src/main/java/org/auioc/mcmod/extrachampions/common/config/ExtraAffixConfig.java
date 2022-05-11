@@ -18,6 +18,8 @@ public class ExtraAffixConfig {
 
     public static final ForgeConfigSpec SPEC;
 
+    public static CommentedConfig rawConfig;
+
     static {
         ForgeConfigSpec.Builder builder = new ForgeConfigSpec.Builder();
 
@@ -34,10 +36,10 @@ public class ExtraAffixConfig {
         SPEC = builder.build();
     }
 
-    public static void buildExtraAffixSettings(CommentedConfig rawConfig) {
+    public static void buildExtraAffixSettings() {
         LOGGER.info(MARKER, "Build extra affix settings");
         for (var affix : AffixRegistry.AFFIXES) {
-            UnmodifiableConfig config = rawConfig.get(affix.getIdentifier());
+            UnmodifiableConfig config = ExtraAffixConfig.rawConfig.get(affix.getIdentifier());
             ChampionsConfig.affixes.add(AffixBasicConfig.transform(affix.getIdentifier(), config));
             if (affix instanceof ExtraAffix) ((ExtraAffix<?>) affix).setExtraConfig(config.get("extra"));
         }

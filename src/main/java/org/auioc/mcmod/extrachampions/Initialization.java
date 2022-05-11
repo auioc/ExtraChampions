@@ -3,7 +3,8 @@ package org.auioc.mcmod.extrachampions;
 import org.auioc.mcmod.extrachampions.common.affix.AffixRegistry;
 import org.auioc.mcmod.extrachampions.common.config.ExtraAffixConfig;
 import org.auioc.mcmod.extrachampions.server.advancement.ExChampCriterionTriggers;
-import net.minecraftforge.eventbus.api.EventPriority;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.server.ServerStartedEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.config.ModConfig;
@@ -15,8 +16,9 @@ public final class Initialization {
 
     public static void init() {
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        final IEventBus forgeEventBus = MinecraftForge.EVENT_BUS;
         register(modEventBus);
-        handleConfig(modEventBus);
+        handleConfig(modEventBus, forgeEventBus);
     }
 
     private static void register(final IEventBus modEventBus) {
@@ -28,13 +30,16 @@ public final class Initialization {
         );
     }
 
-    private static void handleConfig(final IEventBus modEventBus) {
+    private static void handleConfig(final IEventBus modEventBus, final IEventBus forgeEventBus) {
         ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, ExtraAffixConfig.SPEC, ExtraChampions.MOD_ID + "-affixes.toml");
-        modEventBus.addListener(EventPriority.LOWEST, (final ModConfigEvent event) -> {
+        modEventBus.addListener((final ModConfigEvent event) -> {
             ModConfig config = event.getConfig();
             if (config.getModId().equals(ExtraChampions.MOD_ID) && config.getType() == ModConfig.Type.SERVER && config.getSpec() == ExtraAffixConfig.SPEC) {
-                ExtraAffixConfig.buildExtraAffixSettings(config.getConfigData());
+                ExtraAffixConfig.rawConfig = config.getConfigData();
             }
+        });
+        forgeEventBus.addListener((final ServerStartedEvent event) -> {
+            ExtraAffixConfig.buildExtraAffixSettings();
         });
     }
 
