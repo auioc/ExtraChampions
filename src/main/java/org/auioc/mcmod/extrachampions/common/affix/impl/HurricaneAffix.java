@@ -31,7 +31,6 @@ public class HurricaneAffix extends ExtraAffix<HurricaneAffix.Config> {
     private static void randomTeleport(LivingEntity living, double radius) {
         var random = living.getRandom();
         var level = living.level;
-        System.err.println(radius);
         double entityHeight = living.getBbHeight();
         double x = living.getX() + TELEPORT_OFFSET.applyAsDouble(radius, random);
         double y = Mth.clamp(living.getY() + TELEPORT_OFFSET.applyAsDouble(radius, random), level.getMinBuildHeight() + entityHeight, level.getMaxBuildHeight() - entityHeight);
