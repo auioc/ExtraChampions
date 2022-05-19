@@ -24,11 +24,15 @@ public class AcupunctureAffix extends ExtraAffix<AcupunctureAffix.Config> {
     @Override
     public void onSpawn(IChampion champion) {
         var attr = champion.getLivingEntity().getAttribute(Attributes.ATTACK_DAMAGE);
+        if (attr == null) {
+            this.warn(champion);
+            return;
+        }
+
         var modifier = getModifier();
         if (!attr.hasModifier(modifier)) {
             attr.addPermanentModifier(modifier);
         }
-
     }
 
     @Override

@@ -1,16 +1,23 @@
 package org.auioc.mcmod.extrachampions.api.affix;
 
+import static org.auioc.mcmod.extrachampions.ExtraChampions.LOGGER;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.function.Supplier;
 import com.electronwill.nightconfig.core.UnmodifiableConfig;
 import com.electronwill.nightconfig.core.conversion.ObjectConverter;
+import org.apache.logging.log4j.Marker;
+import org.auioc.mcmod.arnicalib.utils.LogUtil;
 import org.auioc.mcmod.extrachampions.api.exception.AutoConfigBuildingException;
 import net.minecraftforge.common.ForgeConfigSpec;
+import net.minecraftforge.registries.ForgeRegistries;
 import top.theillusivec4.champions.api.AffixCategory;
+import top.theillusivec4.champions.api.IChampion;
 import top.theillusivec4.champions.common.affix.core.BasicAffix;
 
 public abstract class ExtraAffix<C> extends BasicAffix {
+
+    private static final Marker MARKER = LogUtil.getMarker(ExtraAffix.class);
 
     protected C config;
     private final AffixBasicConfig basicConfig;
@@ -69,6 +76,10 @@ public abstract class ExtraAffix<C> extends BasicAffix {
         } catch (IllegalArgumentException | IllegalAccessException e) {
             throw new AutoConfigBuildingException("Build config of extra affix '" + this.getIdentifier() + "' failed", e);
         }
+    }
+
+    protected void warn(IChampion champion) {
+        LOGGER.warn(MARKER, "Affix '" + this.getIdentifier() + "' should not be applied to entity '" + ForgeRegistries.ENTITIES.getKey(champion.getLivingEntity().getType()) + "', please add it to the blacklist");
     }
 
 }

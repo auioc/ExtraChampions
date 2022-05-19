@@ -23,7 +23,13 @@ public class FuryAffix extends ExtraAffix<FuryAffix.Config> {
     @Override
     public void onServerUpdate(IChampion champion) {
         var living = champion.getLivingEntity();
+
         var attr = living.getAttribute(Attributes.ATTACK_DAMAGE);
+        if (attr == null) {
+            this.warn(champion);
+            return;
+        }
+
         var modifier = getModifier();
         if (isHealthLow(living)) {
             if (!attr.hasModifier(modifier)) {
