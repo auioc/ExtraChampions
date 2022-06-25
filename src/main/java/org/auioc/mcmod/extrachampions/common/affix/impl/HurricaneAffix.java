@@ -23,7 +23,7 @@ public class HurricaneAffix extends ExtraAffix<HurricaneAffix.Config> {
     public boolean onDeath(IChampion champion, DamageSource source) {
         if (source.getEntity() instanceof LivingEntity target) {
             target.addEffect(new MobEffectInstance(MobEffects.CONFUSION, this.config.effectDuration));
-            randomTeleport(target, this.config.teleportRaduis);
+            randomTeleport(target, this.config.teleportRadius);
         }
         return super.onDeath(champion, source);
     }
@@ -40,7 +40,7 @@ public class HurricaneAffix extends ExtraAffix<HurricaneAffix.Config> {
 
     protected static class Config {
         public int effectDuration = 15 * 20;
-        public double teleportRaduis = 32.0D;
+        public double teleportRadius = 32.0D;
     }
 
 }
