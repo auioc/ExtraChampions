@@ -93,3 +93,4 @@ jobs:
                   prerelease: false
                   files: |
                       build/libs/*.jar
+                      build/libs/*.asc
