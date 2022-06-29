@@ -29,12 +29,12 @@ public class ChampionHelper extends top.theillusivec4.champions.common.util.Cham
         return RandomUtils.percentageChance(chance.applyAsInt(ChampionHelper.getTier(champion)), getRandom(champion));
     }
 
-    public static AABB createAABB(IChampion champion, double raduis) {
-        return (new AABB(champion.getLivingEntity().blockPosition())).inflate(raduis).expandTowards(0.0D, raduis, 0.0D);
+    public static AABB createAABB(IChampion champion, double radius) {
+        return (new AABB(champion.getLivingEntity().blockPosition())).inflate(radius).expandTowards(0.0D, radius, 0.0D);
     }
 
-    public static List<LivingEntity> getLivingFromLevel(IChampion champion, double raduis, Predicate<? super LivingEntity> predicate) {
-        return champion.getLivingEntity().getLevel().getEntitiesOfClass(LivingEntity.class, createAABB(champion, raduis), predicate);
+    public static List<LivingEntity> getLivingFromLevel(IChampion champion, double radius, Predicate<? super LivingEntity> predicate) {
+        return champion.getLivingEntity().getLevel().getEntitiesOfClass(LivingEntity.class, createAABB(champion, radius), predicate);
     }
 
 }
