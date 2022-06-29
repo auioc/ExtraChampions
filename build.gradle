@@ -10,6 +10,7 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle'
 // Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 apply plugin: 'eclipse'
+apply plugin: 'signing'
 apply plugin: 'maven-publish'
 
 group = 'org.auioc.mcmod'
@@ -129,6 +130,12 @@ publishing {
         }
     }
 }
+
+signing {
+    useInMemoryPgpKeys(findProperty('signingKey'), findProperty('signingPassword'))
+    sign publishing.publications
+}
+
 
 task genUpdateJson() {
     doFirst {
