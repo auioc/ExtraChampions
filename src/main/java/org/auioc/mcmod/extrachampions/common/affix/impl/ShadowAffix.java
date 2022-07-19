@@ -1,7 +1,9 @@
 package org.auioc.mcmod.extrachampions.common.affix.impl;
 
+import net.minecraft.core.BlockPos;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.level.Level;
 import top.theillusivec4.champions.api.AffixCategory;
 import top.theillusivec4.champions.api.IChampion;
 import top.theillusivec4.champions.common.affix.core.BasicAffix;
@@ -19,9 +21,13 @@ public class ShadowAffix extends BasicAffix {
     public void onServerUpdate(IChampion champion) {
         var living = champion.getLivingEntity();
         if (living.tickCount % INTERVAL != 0) return;
-        if (living.getLevel().getRawBrightness(living.blockPosition(), 0) < 8) {
+        if (isDarkEnough(living.getLevel(), living.blockPosition())) {
             living.addEffect(new MobEffectInstance(MobEffects.INVISIBILITY, EFFECT_DURATION));
         }
+    }
+
+    private static boolean isDarkEnough(Level level, BlockPos pos) {
+        return level.getRawBrightness(pos, level.getSkyDarken()) < 8;
     }
 
 }
