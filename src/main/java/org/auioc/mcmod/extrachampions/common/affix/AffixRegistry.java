@@ -6,6 +6,8 @@ import java.util.List;
 import org.apache.logging.log4j.Marker;
 import org.auioc.mcmod.arnicalib.utils.LogUtil;
 import org.auioc.mcmod.extrachampions.common.affix.impl.*;
+import org.auioc.mcmod.extrachampions.common.affix.impl.nel.JinxAffix;
+import net.minecraftforge.fml.ModList;
 import top.theillusivec4.champions.Champions;
 import top.theillusivec4.champions.api.IAffix;
 
@@ -15,7 +17,6 @@ public final class AffixRegistry {
 
     public static final List<IAffix> AFFIXES = new ArrayList<IAffix>() {
         {
-            add(new JinxAffix());
             add(new AcupunctureAffix());
             add(new DispelAffix());
             add(new RealityAffix());
@@ -29,8 +30,16 @@ public final class AffixRegistry {
             add(new DisarmoringAffix());
             add(new FuryAffix());
             add(new ThiefAffix());
+
+            if (isLoaded("notenoughluck")) {
+                add(new JinxAffix());
+            }
         }
     };
+
+    private static boolean isLoaded(String modId) {
+        return ModList.get().isLoaded(modId);
+    }
 
     public static void register() {
         LOGGER.info(MARKER, "Register extra affixes");

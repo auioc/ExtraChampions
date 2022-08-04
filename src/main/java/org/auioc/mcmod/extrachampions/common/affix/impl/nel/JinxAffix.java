@@ -1,4 +1,4 @@
-package org.auioc.mcmod.extrachampions.common.affix.impl;
+package org.auioc.mcmod.extrachampions.common.affix.impl.nel;
 
 import java.util.function.ToIntFunction;
 import org.auioc.mcmod.arnicalib.utils.java.RandomUtils;
