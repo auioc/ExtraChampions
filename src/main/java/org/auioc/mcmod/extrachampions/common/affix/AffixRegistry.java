@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.logging.log4j.Marker;
 import org.auioc.mcmod.arnicalib.utils.LogUtil;
 import org.auioc.mcmod.extrachampions.common.affix.impl.*;
+import org.auioc.mcmod.extrachampions.common.affix.impl.haruhiism.ShinjinAffix;
 import org.auioc.mcmod.extrachampions.common.affix.impl.nel.JinxAffix;
 import net.minecraftforge.fml.ModList;
 import top.theillusivec4.champions.Champions;
@@ -33,6 +34,10 @@ public final class AffixRegistry {
 
             if (isLoaded("notenoughluck")) {
                 add(new JinxAffix());
+            }
+
+            if (isLoaded("haruhiism")) {
+                add(new ShinjinAffix());
             }
         }
     };
