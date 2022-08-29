@@ -12,7 +12,8 @@ import top.theillusivec4.champions.api.IChampion;
 
 public class FuryAffix extends ExtraAffix<FuryAffix.Config> {
 
-    private static final Supplier<AffixBasicConfig> BASIC_CONFIG = () -> new AffixBasicConfig().setMobList(List.of("minecraft:creeper"));
+    private static final Supplier<AffixBasicConfig> BASIC_CONFIG = () -> new AffixBasicConfig()
+        .setMobList(List.of("minecraft:creeper", "minecraft:ghast", "minecraft:shulker"));
 
     private AttributeModifier modifier;
 

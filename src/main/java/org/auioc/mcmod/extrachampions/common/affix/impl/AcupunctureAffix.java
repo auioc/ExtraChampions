@@ -13,7 +13,8 @@ import top.theillusivec4.champions.api.IChampion;
 
 public class AcupunctureAffix extends ExtraAffix<AcupunctureAffix.Config> {
 
-    private static final Supplier<AffixBasicConfig> BASIC_CONFIG = () -> new AffixBasicConfig().setMobList(List.of("minecraft:creeper"));
+    private static final Supplier<AffixBasicConfig> BASIC_CONFIG = () -> new AffixBasicConfig()
+        .setMobList(List.of("minecraft:creeper", "minecraft:ghast", "minecraft:shulker"));
 
     private AttributeModifier modifier;
 
