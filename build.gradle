@@ -10,12 +10,13 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle'
 // Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 apply plugin: 'eclipse'
-apply plugin: 'signing'
-apply plugin: 'maven-publish'
 
-group = 'org.auioc.mcmod'
-archivesBaseName = "extrachampions"
-version = "${minecraft_version}-${extrachampions_version}"
+project.ext.modId = "${mod_id}"
+project.ext.modName = "${mod_name}"
+project.ext.modVersion= "${mod_version}"
+group = "${group}"
+archivesBaseName = "${project.modId}"
+apply from: 'gradle/version.gradle'
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
@@ -55,8 +56,8 @@ repositories {
     maven {
         url "https://maven.pkg.github.com/auioc/arnicalib-mcmod"
         credentials {
-            username = getVar("GITHUB_ACTOR") ? getVar("GITHUB_ACTOR") : getVar("GITHUB_USERNAME")
-            password = getVar("GITHUB_TOKEN")
+            username = System.getenv("GITHUB_ACTOR") ? System.getenv("GITHUB_ACTOR") : System.getenv("GITHUB_USERNAME")
+            password = System.getenv("GITHUB_TOKEN")
         }
     }
     maven {
@@ -72,91 +73,15 @@ dependencies {
 
     implementation fg.deobf("curse.maven:champions-307152:${champions_cf_file_id}")
 
-    if (getVar('GITHUB_ACTOR') == null) {
+    if (System.getenv('CI') == null) {
         runtimeOnly fg.deobf("curse.maven:jade-324717:3865918")
     }
 }
 
-ext {
-    manifest_attributes = [
-        "Specification-Title": 'extrachampions',
-        "Specification-Vendor": 'AUIOC',
-        "Specification-Version": '1',
-        "Implementation-Title": project.name,
-        "Implementation-Version": "${extrachampions_version}",
-        "Implementation-Vendor" :'AUIOC',
-        "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
-        "ExtraChampions-Version": "${archivesBaseName}-${version}-${getVar('CI_VERSION')}"
-    ]
-}
+apply from: 'gradle/tasks.gradle'
 
-jar {
-    manifest {attributes(manifest_attributes)}
-}
-jar.finalizedBy('reobfJar')
+apply from: 'gradle/artifacts.gradle'
 
-task forgelibJar(type: Jar) {
-    from sourceSets.main.output
-    from sourceSets.main.allJava
-    classifier = 'forgelib'
-    manifest {attributes(manifest_attributes)}
-}
-artifacts {
-    archives forgelibJar
-}
+apply from: 'gradle/publishing.gradle'
+apply from: 'gradle/signing.gradle'
 
-tasks.build.dependsOn('forgelibJar')
-
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            groupId project.group
-            artifactId project.archivesBaseName
-            version project.version
-            from components.java
-            artifact forgelibJar {
-                classifier 'forgelib'
-            }
-        }
-    }
-    repositories {
-        maven {
-            name = 'GitHubPackages'
-            url = uri('https://maven.pkg.github.com/auioc/ExtraChampions')
-            credentials {
-                username = getVar('GITHUB_ACTOR')
-                password = getVar('GITHUB_TOKEN')
-            }
-        }
-        maven {
-            name = 'McmodsRepo'
-            url "file://${project.projectDir}/mcmodsrepo"
-        }
-    }
-}
-
-signing {
-    useInMemoryPgpKeys(findProperty('signingKey'), findProperty('signingPassword'))
-    sign publishing.publications
-}
-
-
-task genUpdateJson() {
-    doFirst {
-        def j = [
-            'homepage': 'https://github.com/auioc/ExtraChampions/releases',
-            'promos': [
-                    "${minecraft_version}-latest": "${extrachampions_version}",
-                    "${minecraft_version}-recommended": "${extrachampions_version}",
-            ]
-        ]
-        println(groovy.json.JsonOutput.toJson(j))
-        File file = file("tmp/${minecraft_version}.json")
-        file.write(groovy.json.JsonOutput.toJson(j))
-    }
-}
-
-
-def getVar(String var_name) {
-    return System.getenv(var_name)
-}
