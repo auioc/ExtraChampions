@@ -2,7 +2,6 @@ package org.auioc.mcmod.extrachampions.common.affix.impl;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.IntUnaryOperator;
 import java.util.function.Supplier;
 import org.auioc.mcmod.arnicalib.utils.game.ItemUtils;
 import org.auioc.mcmod.extrachampions.api.affix.AffixBasicConfig;
@@ -20,8 +19,6 @@ public class StickyAffix extends ExtraAffix<StickyAffix.Config> {
 
     private static final Supplier<AffixBasicConfig> BASIC_CONFIG = () -> new AffixBasicConfig().setEnabled(false).setMinTier(2);
 
-    private static final IntUnaryOperator CHANCE = (tier) -> 30 + tier * 10;
-
     private List<Item> blacklist;
 
     public StickyAffix() {
@@ -30,10 +27,7 @@ public class StickyAffix extends ExtraAffix<StickyAffix.Config> {
 
     @Override
     public boolean onAttacked(IChampion champion, DamageSource source, float amount) {
-        if (
-            source.getEntity() instanceof ServerPlayer
-                && ChampionHelper.chanceBasedOnTier(champion, CHANCE)
-        ) {
+        if (source.getEntity() instanceof ServerPlayer && shouldTryPerform(champion)) {
             var player = (ServerPlayer) source.getEntity();
             var inventory = player.getInventory();
             var itemToDrop = inventory.getSelected();
@@ -43,6 +37,10 @@ public class StickyAffix extends ExtraAffix<StickyAffix.Config> {
             }
         }
         return super.onAttacked(champion, source, amount);
+    }
+
+    private boolean shouldTryPerform(IChampion champion) {
+        return ChampionHelper.chanceBasedOnTier(champion, (tier) -> this.config.baseChance + tier * this.config.bonusChancePreTier);
     }
 
     private boolean shouldDrop(ItemStack itemToDrop) {
@@ -57,6 +55,8 @@ public class StickyAffix extends ExtraAffix<StickyAffix.Config> {
     }
 
     protected static class Config {
+        public int baseChance = 15;
+        public int bonusChancePreTier = 5;
         public List<String> blacklist = new ArrayList<String>();
     }
 
