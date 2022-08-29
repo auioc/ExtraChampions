@@ -12,6 +12,7 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.Enchantments;
 import top.theillusivec4.champions.api.AffixCategory;
 import top.theillusivec4.champions.api.IChampion;
 
@@ -32,6 +33,9 @@ public class StickyAffix extends ExtraAffix<StickyAffix.Config> {
             var inventory = player.getInventory();
             var itemToDrop = inventory.getSelected();
             if (shouldDrop(itemToDrop)) {
+                if (shouldApplyCurse(champion, itemToDrop)) {
+                    itemToDrop.enchant(Enchantments.BINDING_CURSE, 1);
+                }
                 inventory.removeItem(itemToDrop);
                 player.drop(itemToDrop, false);
             }
@@ -47,6 +51,10 @@ public class StickyAffix extends ExtraAffix<StickyAffix.Config> {
         return !getBlacklist().contains(itemToDrop.getItem()) && !EnchantmentHelper.hasBindingCurse(itemToDrop);
     }
 
+    private boolean shouldApplyCurse(IChampion champion, ItemStack itemToDrop) {
+        return itemToDrop.getItemEnchantability() > 0 && ChampionHelper.chanceBasedOnTier(champion, (tier) -> this.config.baseCurseChance + tier * this.config.bonusCurseChancePreTier);
+    }
+
     private List<Item> getBlacklist() {
         if (this.blacklist == null) {
             this.blacklist = ItemUtils.getItems(this.config.blacklist);
@@ -55,8 +63,10 @@ public class StickyAffix extends ExtraAffix<StickyAffix.Config> {
     }
 
     protected static class Config {
-        public int baseChance = 15;
-        public int bonusChancePreTier = 5;
+        public int baseChance = 30;
+        public int bonusChancePreTier = 15;
+        public int baseCurseChance = 0;
+        public int bonusCurseChancePreTier = 1;
         public List<String> blacklist = new ArrayList<String>();
     }
 

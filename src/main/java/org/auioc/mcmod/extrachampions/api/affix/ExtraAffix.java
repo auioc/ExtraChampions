@@ -4,11 +4,11 @@ import static org.auioc.mcmod.extrachampions.ExtraChampions.LOGGER;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.function.Supplier;
-import com.electronwill.nightconfig.core.UnmodifiableConfig;
-import com.electronwill.nightconfig.core.conversion.ObjectConverter;
 import org.apache.logging.log4j.Marker;
 import org.auioc.mcmod.arnicalib.utils.LogUtil;
 import org.auioc.mcmod.extrachampions.api.exception.AutoConfigBuildingException;
+import com.electronwill.nightconfig.core.UnmodifiableConfig;
+import com.electronwill.nightconfig.core.conversion.ObjectConverter;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.registries.ForgeRegistries;
 import top.theillusivec4.champions.api.AffixCategory;
@@ -19,7 +19,7 @@ public abstract class ExtraAffix<C> extends BasicAffix {
 
     private static final Marker MARKER = LogUtil.getMarker(ExtraAffix.class);
 
-    protected C config;
+    protected final C config;
     private final AffixBasicConfig basicConfig;
 
     public ExtraAffix(String id, AffixCategory category, boolean hasSubscriptions, Supplier<AffixBasicConfig> basicConfig, Supplier<C> extraConfig) {
