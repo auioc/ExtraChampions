@@ -7,6 +7,7 @@ import org.auioc.mcmod.arnicalib.utils.java.RandomUtils;
 import org.auioc.mcmod.extrachampions.api.affix.ExtraAffix;
 import org.auioc.mcmod.extrachampions.utils.ChampionHelper;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.EnchantedBookItem;
@@ -14,6 +15,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import top.theillusivec4.champions.api.AffixCategory;
 import top.theillusivec4.champions.api.IChampion;
+import top.theillusivec4.champions.common.rank.RankManager;
 
 public class RealityAffix extends ExtraAffix<RealityAffix.Config> {
 
@@ -69,9 +71,11 @@ public class RealityAffix extends ExtraAffix<RealityAffix.Config> {
         ArrayUtils.shuffle(armors, random);
         for (var stack : armors) if (removeEnchantment(stack, random)) return;
 
-        var invitems = inventory.items.toArray(new ItemStack[inventory.items.size()]);
-        ArrayUtils.shuffle(invitems, random);
-        for (var stack : invitems) if (removeEnchantment(stack, random)) return;
+        if (ChampionHelper.getRank(champion).equals(RankManager.getHighestRank())) {
+            var invitems = inventory.items.toArray(new ItemStack[inventory.items.size()]);
+            ArrayUtils.shuffle(invitems, random);
+            for (var stack : invitems) if (removeEnchantment(stack, random)) return;
+        }
     }
 
     private static boolean removeEnchantment(ItemStack stack, @Nullable Random random) {
