@@ -52,11 +52,18 @@ public class RealityAffix extends ExtraAffix<RealityAffix.Config> {
 
 
     private static void removeEnchantment(ServerPlayer player, IChampion champion) {
-        var inventory = player.getInventory();
         var random = ChampionHelper.getRandom(champion);
 
-        if (removeEnchantment(inventory.getSelected(), random)) return;
-        if (removeEnchantment(inventory.offhand.get(0), random)) return;
+        InteractionHand a = InteractionHand.MAIN_HAND;
+        InteractionHand b = InteractionHand.OFF_HAND;
+        if (random.nextBoolean()) {
+            a = InteractionHand.OFF_HAND;
+            b = InteractionHand.MAIN_HAND;
+        }
+        if (removeEnchantment(player.getItemInHand(a), random)) return;
+        if (removeEnchantment(player.getItemInHand(b), random)) return;
+
+        var inventory = player.getInventory();
 
         var armors = inventory.armor.toArray(new ItemStack[inventory.armor.size()]);
         ArrayUtils.shuffle(armors, random);
