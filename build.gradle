@@ -1,64 +1,25 @@
 buildscript {
     repositories {
-        maven { url = 'https://maven.minecraftforge.net' }
         mavenCentral()
+        maven { url = 'https://maven.minecraftforge.net' }
+        maven { url = 'https://repo.spongepowered.org/maven' }
     }
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
+        classpath 'org.spongepowered:mixingradle:0.7.+'
     }
 }
 apply plugin: 'net.minecraftforge.gradle'
-// Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 apply plugin: 'eclipse'
-
-project.ext.modId = "${mod_id}"
-project.ext.modName = "${mod_name}"
-project.ext.modVersion= "${mod_version}"
-group = "${group}"
-archivesBaseName = "${project.modId}"
-apply from: 'gradle/version.gradle'
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
-println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
-minecraft {
-    mappings channel: "${mappings_channel}", version: "${mappings_version}"
-    runs {
-        client {
-            workingDirectory project.file('run')
-            property 'file.encoding', 'UTF-8'
-            property 'user.language', 'en'
-            property 'log4j.configurationFile', 'log4j2.xml'
-            mods {
-                extrachampions {
-                    source sourceSets.main
-                }
-            }
-        }
-
-        server {
-            workingDirectory project.file('run')
-            property 'file.encoding', 'UTF-8'
-            property 'user.language', 'en'
-            property 'log4j.configurationFile', 'log4j2.xml'
-            mods {
-                extrachampions {
-                    source sourceSets.main
-                }
-            }
-        }
-    }
-}
-
-sourceSets.remove(sourceSets.test)
+apply from: 'gradle/a.gradle'
 
 repositories {
-    maven {
-        url "https://maven.pkg.github.com/auioc/arnicalib-mcmod"
-        credentials {
-            username = System.getenv("GITHUB_ACTOR") ? System.getenv("GITHUB_ACTOR") : System.getenv("GITHUB_USERNAME")
-            password = System.getenv("GITHUB_TOKEN")
-        }
+    maven { 
+        url 'https://repo.auioc.com/maven/releases'
+        content { includeGroup "org.auioc.mcmod" }
     }
     maven {
         name = "CurseMaven"
@@ -69,7 +30,7 @@ repositories {
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 
-    implementation "org.auioc.mcmod:arnicalib:${minecraft_version}-${arnicalib_version}:forgelib"
+    implementation "org.auioc.mcmod:arnicalib:${minecraft_version}-${arnicalib_version}:deobf"
 
     implementation fg.deobf("curse.maven:champions-307152:${champions_cf_file_id}")
 
@@ -78,10 +39,4 @@ dependencies {
     }
 }
 
-apply from: 'gradle/tasks.gradle'
-
-apply from: 'gradle/artifacts.gradle'
-
-apply from: 'gradle/publishing.gradle'
-apply from: 'gradle/signing.gradle'
-
+apply from: 'gradle/b.gradle'
