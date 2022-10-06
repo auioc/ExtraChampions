@@ -19,7 +19,7 @@ A [Champions](https://github.com/TheIllusiveC4/Champions) Addon adds some new af
 ## Dependencies
 
 - [Champions](https://github.com/TheIllusiveC4/Champions) ≥2.1.3.0
-- [ArnicaLib](https://github.com/auioc/arnicalib-mcmod) ≥5.3.4
+- [ArnicaLib](https://github.com/auioc/arnicalib-mcmod) ≥5.6.1
 
 ## Maintainers
 
