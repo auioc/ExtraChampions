@@ -4,7 +4,7 @@ import static org.auioc.mcmod.extrachampions.ExtraChampions.LOGGER;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.logging.log4j.Marker;
-import org.auioc.mcmod.arnicalib.utils.LogUtil;
+import org.auioc.mcmod.arnicalib.base.log.LogUtil;
 import org.auioc.mcmod.extrachampions.common.affix.impl.*;
 import org.auioc.mcmod.extrachampions.common.affix.impl.haruhiism.ShinjinAffix;
 import org.auioc.mcmod.extrachampions.common.affix.impl.nel.JinxAffix;

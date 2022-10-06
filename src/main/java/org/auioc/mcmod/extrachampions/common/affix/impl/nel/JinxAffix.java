@@ -1,7 +1,7 @@
 package org.auioc.mcmod.extrachampions.common.affix.impl.nel;
 
 import java.util.function.ToIntFunction;
-import org.auioc.mcmod.arnicalib.utils.java.RandomUtils;
+import org.auioc.mcmod.arnicalib.base.random.RandomUtils;
 import org.auioc.mcmod.extrachampions.api.affix.ExtraAffix;
 import org.auioc.mcmod.extrachampions.utils.ChampionHelper;
 import net.minecraft.world.damagesource.DamageSource;

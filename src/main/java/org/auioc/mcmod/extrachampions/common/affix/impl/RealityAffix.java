@@ -3,7 +3,7 @@ package org.auioc.mcmod.extrachampions.common.affix.impl;
 import java.util.Random;
 import javax.annotation.Nullable;
 import org.apache.commons.lang3.ArrayUtils;
-import org.auioc.mcmod.arnicalib.utils.java.RandomUtils;
+import org.auioc.mcmod.arnicalib.base.random.RandomUtils;
 import org.auioc.mcmod.extrachampions.api.affix.ExtraAffix;
 import org.auioc.mcmod.extrachampions.utils.ChampionHelper;
 import net.minecraft.server.level.ServerPlayer;

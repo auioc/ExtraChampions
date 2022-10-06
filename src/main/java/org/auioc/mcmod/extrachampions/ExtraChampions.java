@@ -3,8 +3,8 @@ package org.auioc.mcmod.extrachampions;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.Marker;
-import org.auioc.mcmod.arnicalib.utils.LogUtil;
-import org.auioc.mcmod.arnicalib.utils.java.VersionUtils;
+import org.auioc.mcmod.arnicalib.base.log.LogUtil;
+import org.auioc.mcmod.arnicalib.base.version.VersionUtils;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod(ExtraChampions.MOD_ID)

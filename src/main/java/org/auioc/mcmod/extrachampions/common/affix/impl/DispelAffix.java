@@ -5,7 +5,7 @@ import java.util.NoSuchElementException;
 import java.util.function.IntUnaryOperator;
 import java.util.function.Supplier;
 import org.apache.commons.lang3.ObjectUtils.Null;
-import org.auioc.mcmod.arnicalib.utils.game.EffectUtils;
+import org.auioc.mcmod.arnicalib.game.effect.MobEffectPredicates;
 import org.auioc.mcmod.extrachampions.api.affix.AffixBasicConfig;
 import org.auioc.mcmod.extrachampions.api.affix.ExtraAffix;
 import org.auioc.mcmod.extrachampions.utils.ChampionHelper;
@@ -35,7 +35,7 @@ public class DispelAffix extends ExtraAffix<Null> {
                 target.removeEffect(
                     (effects
                         .stream()
-                        .filter(EffectUtils.IS_BENEFICIAL)
+                        .filter(MobEffectPredicates.IS_BENEFICIAL)
                         .skip(ChampionHelper.getRandom(champion).nextLong(effects.size()))
                         .findFirst()
                         .get())

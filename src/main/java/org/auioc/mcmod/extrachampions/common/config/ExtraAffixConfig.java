@@ -1,13 +1,13 @@
 package org.auioc.mcmod.extrachampions.common.config;
 
 import static org.auioc.mcmod.extrachampions.ExtraChampions.LOGGER;
-import com.electronwill.nightconfig.core.CommentedConfig;
-import com.electronwill.nightconfig.core.UnmodifiableConfig;
 import org.apache.logging.log4j.Marker;
-import org.auioc.mcmod.arnicalib.utils.LogUtil;
+import org.auioc.mcmod.arnicalib.base.log.LogUtil;
 import org.auioc.mcmod.extrachampions.api.affix.AffixBasicConfig;
 import org.auioc.mcmod.extrachampions.api.affix.ExtraAffix;
 import org.auioc.mcmod.extrachampions.common.affix.AffixRegistry;
+import com.electronwill.nightconfig.core.CommentedConfig;
+import com.electronwill.nightconfig.core.UnmodifiableConfig;
 import net.minecraftforge.common.ForgeConfigSpec;
 import top.theillusivec4.champions.common.affix.core.AffixManager;
 import top.theillusivec4.champions.common.config.ChampionsConfig;

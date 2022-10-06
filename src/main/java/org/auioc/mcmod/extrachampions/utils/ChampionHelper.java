@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.function.IntUnaryOperator;
 import java.util.function.Predicate;
-import org.auioc.mcmod.arnicalib.utils.java.RandomUtils;
+import org.auioc.mcmod.arnicalib.base.random.RandomUtils;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.phys.AABB;
 import top.theillusivec4.champions.api.IChampion;

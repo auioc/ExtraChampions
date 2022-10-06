@@ -1,6 +1,6 @@
 package org.auioc.mcmod.extrachampions.common.affix.impl;
 
-import org.auioc.mcmod.arnicalib.utils.game.RandomTeleporter;
+import org.auioc.mcmod.arnicalib.game.world.position.RandomTeleporter;
 import org.auioc.mcmod.extrachampions.api.affix.ExtraAffix;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;

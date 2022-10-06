@@ -1,6 +1,6 @@
 package org.auioc.mcmod.extrachampions.common.affix.impl;
 
-import org.auioc.mcmod.arnicalib.utils.game.EntityUtils;
+import org.auioc.mcmod.arnicalib.game.entity.EntityPredicates;
 import org.auioc.mcmod.extrachampions.api.affix.AffixBasicConfig;
 import org.auioc.mcmod.extrachampions.api.affix.ExtraAffix;
 import org.auioc.mcmod.extrachampions.utils.ChampionHelper;
@@ -25,7 +25,7 @@ public class NecromancerAffix extends ExtraAffix<NecromancerAffix.Config> {
         if (living.tickCount % INTERVAL != 0) return;
 
         int effectAmplifier = Math.min((ChampionHelper.getTier(champion) - 1), 1) - 1;
-        ChampionHelper.getLivingFromLevel(champion, this.config.searchRadiusOfTeammate, EntityUtils.IS_UNDEAD)
+        ChampionHelper.getLivingFromLevel(champion, this.config.searchRadiusOfTeammate, EntityPredicates.IS_UNDEAD)
             .forEach((teammate) -> {
                 for (MobEffect effect : EFFECTS) {
                     teammate.addEffect(new MobEffectInstance(effect, INTERVAL, effectAmplifier));

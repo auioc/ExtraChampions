@@ -1,6 +1,6 @@
 package org.auioc.mcmod.extrachampions.common.affix.impl;
 
-import org.auioc.mcmod.arnicalib.utils.game.EntityUtils;
+import org.auioc.mcmod.arnicalib.game.entity.EntityPredicates;
 import org.auioc.mcmod.extrachampions.api.affix.AffixBasicConfig;
 import org.auioc.mcmod.extrachampions.api.affix.ExtraAffix;
 import org.auioc.mcmod.extrachampions.utils.ChampionHelper;
@@ -22,7 +22,7 @@ public class LeaderAffix extends ExtraAffix<LeaderAffix.Config> {
         var living = champion.getLivingEntity();
         if (living.tickCount % INTERVAL != 0) return;
 
-        ChampionHelper.getLivingFromLevel(champion, this.config.searchRadiusOfTeammate, EntityUtils.IS_MONSTER)
+        ChampionHelper.getLivingFromLevel(champion, this.config.searchRadiusOfTeammate, EntityPredicates.IS_MONSTER)
             .forEach((teammate) -> {
                 if (teammate.equals(living)) return;
                 teammate.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, INTERVAL, 2));

@@ -3,7 +3,7 @@ package org.auioc.mcmod.extrachampions.common.affix.impl;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Supplier;
-import org.auioc.mcmod.arnicalib.utils.game.ItemUtils;
+import org.auioc.mcmod.arnicalib.game.item.ItemRegistry;
 import org.auioc.mcmod.extrachampions.api.affix.AffixBasicConfig;
 import org.auioc.mcmod.extrachampions.api.affix.ExtraAffix;
 import org.auioc.mcmod.extrachampions.utils.ChampionHelper;
@@ -27,6 +27,7 @@ public class StickyAffix extends ExtraAffix<StickyAffix.Config> {
     }
 
     @Override
+    @SuppressWarnings("null")
     public boolean onAttacked(IChampion champion, DamageSource source, float amount) {
         if (source.getEntity() instanceof ServerPlayer && shouldTryPerform(champion)) {
             var player = (ServerPlayer) source.getEntity();
@@ -57,7 +58,7 @@ public class StickyAffix extends ExtraAffix<StickyAffix.Config> {
 
     private List<Item> getBlacklist() {
         if (this.blacklist == null) {
-            this.blacklist = ItemUtils.getItems(this.config.blacklist);
+            this.blacklist = ItemRegistry.getItems(this.config.blacklist);
         }
         return this.blacklist;
     }

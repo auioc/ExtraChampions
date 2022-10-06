@@ -3,8 +3,8 @@ package org.auioc.mcmod.extrachampions.common.affix.impl;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Supplier;
-import org.auioc.mcmod.arnicalib.utils.game.ItemUtils;
-import org.auioc.mcmod.arnicalib.utils.java.RandomUtils;
+import org.auioc.mcmod.arnicalib.base.random.RandomUtils;
+import org.auioc.mcmod.arnicalib.game.item.ItemRegistry;
 import org.auioc.mcmod.extrachampions.api.affix.AffixBasicConfig;
 import org.auioc.mcmod.extrachampions.api.affix.ExtraAffix;
 import org.auioc.mcmod.extrachampions.server.advancement.ExChampCriterionTriggers;
@@ -47,7 +47,7 @@ public class ThiefAffix extends ExtraAffix<ThiefAffix.Config> {
 
     private List<Item> getStealableItems() {
         if (this.stealableItems == null) {
-            this.stealableItems = ItemUtils.getItems(this.config.stealableItems);
+            this.stealableItems = ItemRegistry.getItems(this.config.stealableItems);
         }
         return this.stealableItems;
     }
