@@ -38,9 +38,11 @@ public final class Initialization {
                 ExtraAffixConfig.rawConfig = config.getConfigData();
             }
         });
-        forgeEventBus.addListener((final ServerStartedEvent event) -> {
-            ExtraAffixConfig.buildExtraAffixSettings();
-        });
+        forgeEventBus.addListener(
+            (final ServerStartedEvent event) -> {
+                ExtraAffixConfig.buildExtraAffixSettings();
+            }
+        );
     }
 
 }
