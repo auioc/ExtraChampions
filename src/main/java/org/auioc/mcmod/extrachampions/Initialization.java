@@ -2,6 +2,7 @@ package org.auioc.mcmod.extrachampions;
 
 import org.auioc.mcmod.extrachampions.common.affix.AffixRegistry;
 import org.auioc.mcmod.extrachampions.common.config.ExtraAffixConfig;
+import org.auioc.mcmod.extrachampions.compat.Compat;
 import org.auioc.mcmod.extrachampions.server.advancement.ExChampCriterionTriggers;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.server.ServerStartedEvent;
@@ -17,6 +18,7 @@ public final class Initialization {
     public static void init() {
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         final IEventBus forgeEventBus = MinecraftForge.EVENT_BUS;
+        Compat.init();
         register(modEventBus);
         handleConfig(modEventBus, forgeEventBus);
     }

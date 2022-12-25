@@ -1,6 +1,9 @@
 package org.auioc.mcmod.extrachampions.common.affix.impl.haruhiism;
 
 import org.auioc.mcmod.extrachampions.api.affix.ExtraAffix;
+import org.auioc.mcmod.extrachampions.compat.Compat;
+import org.auioc.mcmod.extrachampions.compat.pehkui.PehkuiCompat;
+import org.auioc.mcmod.extrachampions.utils.ChampionHelper;
 import net.minecraft.world.damagesource.DamageSource;
 import top.theillusivec4.champions.api.AffixCategory;
 import top.theillusivec4.champions.api.IChampion;
@@ -9,6 +12,16 @@ public class ShinjinAffix extends ExtraAffix<ShinjinAffix.Config> {
 
     public ShinjinAffix() {
         super("shinjin", AffixCategory.DEFENSE, Config::new);
+    }
+
+    @Override
+    public void onInitialSpawn(IChampion champion) {
+        if (Compat.PEHKUI) {
+            PehkuiCompat.setSizeScale(
+                champion.getLivingEntity(),
+                1.0F + (ChampionHelper.getTier(champion) * 1.0F)
+            );
+        }
     }
 
     @Override
