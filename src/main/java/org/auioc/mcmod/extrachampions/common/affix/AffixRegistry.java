@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.apache.logging.log4j.Marker;
 import org.auioc.mcmod.arnicalib.base.log.LogUtil;
+import org.auioc.mcmod.arnicalib.game.mod.EnvironmentUtils;
 import org.auioc.mcmod.extrachampions.common.affix.impl.*;
 import org.auioc.mcmod.extrachampions.common.affix.impl.haruhiism.ShinjinAffix;
 import org.auioc.mcmod.extrachampions.common.affix.impl.nel.JinxAffix;
@@ -32,11 +33,11 @@ public final class AffixRegistry {
             add(new FuryAffix());
             add(new ThiefAffix());
 
-            if (isLoaded("notenoughluck")) {
+            if (EnvironmentUtils.IS_DEV | isLoaded("notenoughluck")) {
                 add(new JinxAffix());
             }
 
-            if (isLoaded("haruhiism")) {
+            if (EnvironmentUtils.IS_DEV | isLoaded("haruhiism")) {
                 add(new ShinjinAffix());
             }
         }
