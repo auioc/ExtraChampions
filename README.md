@@ -6,8 +6,7 @@ A [Champions](https://github.com/TheIllusiveC4/Champions) Addon adds some new af
 
 [![GitHub license](https://img.shields.io/github/license/auioc/ExtraChampions?style=flat-square)](/LICENSE)
 [![GitHub release](https://img.shields.io/github/v/release/auioc/ExtraChampions?style=flat-square)](https://github.com/auioc/ExtraChampions/releases/latest)
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/auioc/ExtraChampions/auto-release?label=release%20build&style=flat-square)](https://github.com/auioc/ExtraChampions/actions/workflows/auto-release.yml)
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/auioc/ExtraChampions/dev-build?label=dev%20build&style=flat-square)](https://github.com/auioc/ExtraChampions/actions/workflows/dev-build.yml)
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/auioc/ExtraChampions/dev-build.yml?branch=1.18-forge&label=dev%20build&style=flat-square)](https://github.com/auioc/ExtraChampions/actions/workflows/dev-build.yml)
 <br/>
 ![Minecraft](https://img.shields.io/static/v1?label=Minecraft&message=1.18.2&color=00aa00&style=flat-square)
 [![Forge](https://img.shields.io/static/v1?label=Forge&message=40.1.0&color=e04e14&logo=Conda-Forge&style=flat-square)](http://files.minecraftforge.net/net/minecraftforge/forge/index_1.18.2.html)
