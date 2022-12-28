@@ -10,7 +10,7 @@ A [Champions](https://github.com/TheIllusiveC4/Champions) Addon adds some new af
 <br/>
 ![Minecraft](https://img.shields.io/static/v1?label=Minecraft&message=1.18.2&color=00aa00&style=flat-square)
 [![Forge](https://img.shields.io/static/v1?label=Forge&message=40.1.0&color=e04e14&logo=Conda-Forge&style=flat-square)](http://files.minecraftforge.net/net/minecraftforge/forge/index_1.18.2.html)
-[![AdoptiumOpenJDK](https://img.shields.io/static/v1?label=AdoptiumOpenJDK&message=17.0.2%2B8&color=brightgreen&logo=java&style=flat-square)](https://adoptium.net/?variant=openjdk17&jvmVariant=hotspot)
+![OpenJDK](https://img.shields.io/static/v1?label=OpenJDK&message=17&color=brightgreen&logo=java&style=flat-square)
 [![Gradle](https://img.shields.io/static/v1?label=Gradle&message=7.3&color=brightgreen&logo=gradle&style=flat-square)](https://docs.gradle.org/7.3/release-notes.html)
 
 </div>
@@ -18,7 +18,7 @@ A [Champions](https://github.com/TheIllusiveC4/Champions) Addon adds some new af
 ## Dependencies
 
 - [Champions](https://github.com/TheIllusiveC4/Champions) ≥2.1.3.0
-- [ArnicaLib](https://github.com/auioc/arnicalib-mcmod) ≥5.6.1
+- [ArnicaLib](https://github.com/auioc/arnicalib-mcmod) ≥5.6.5
 
 ## Maintainers
 

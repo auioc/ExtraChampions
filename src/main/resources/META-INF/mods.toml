@@ -31,7 +31,7 @@ A Champions Addon adds some new affixes and misc.
 [[dependencies.extrachampions]]
     modId="arnicalib"
     mandatory=true
-    versionRange="[5.6.1,)"
+    versionRange="[5.6.5,)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.extrachampions]]
